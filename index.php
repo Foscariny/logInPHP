@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,14 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./styles/style.css" />
-    <title>LOGIN em PHP</title>
+    <link rel="icon" type="image/png" href="./imagens/icon.png">
+    <script src="https://kit.fontawesome.com/83506e1289.js" crossorigin="anonymous"></script>
+
+    <title>Login em PHP</title>
 </head>
 
 <body>
-    <h2>Logue para acessar os Registros de usuários</h2>
+    <!-- <h2>Acesso ao Registro de usuários</h2> -->
 
-    <?php
-session_start();
+<?php
 date_default_timezone_set("America/Sao_Paulo");
 echo "<div id='form'>";
 $nome = "";
@@ -22,24 +25,27 @@ if(!isset($_SESSION['email'])){
 
     <form name="form-usuario" id="form-aluno" method="POST">
 
+    <h1 id="titulo"> LOGIN </h1>
+        <div class="campos">
+            <input required name="email" autocomplete="off" type="email" placeholder="Email" ><br>
+            <i class="fas fa-envelope"></i>
+        </div>
+        <div class="campos">
+            <input required name="senha" autocomplete="off" type="password" placeholder="Senha" minlength="7"><br>
+            <i class="fas fa-unlock-alt"></i>
+        </div>
 
-        <div class="input">
-            <label class="labels" for="email">Email:</label><br>
-            <input required name="email" autocomplete="off" type="email"><br>
-        </div>
-        <div class="input">
-            <label class="labels" for="email">Senha:</label><br>
-            <input required name="senha" autocomplete="off" type="password"><br>
+        <div class="botao">
+            <input type="submit" name="enviar" value="Enviar">
         </div>
 
-        <div class="input">
-            <input type="submit" name="enviar" value="enviar">
-        </div>
+        
 
     </form>
+    <p id="registro"> Não tem conta ainda? <a href="cadastro.php">Cadastre-se</a></p>
     </div>
 
-    <p> Não tem conta ainda? <a href="cadastro.php">Cadastre-se</a></p>
+    
 
     <?php 
     $usuario = "Indefinido";
@@ -63,16 +69,14 @@ if(!isset($_SESSION['email'])){
         $nomeJaExistente  = $dado['0'];
         $emailJaExistente = $dado['1'];
         $senhaJaExistente = $dado['2'];
-        if( $emailJaExistente == $email && $senha == $senha){
+        if($senhaJaExistente == $senha && $emailJaExistente == $email){
             $login = 1;
-            
             $_SESSION["email"]=$_POST['email'];
-            /*Recarrega a Página*/
-            header("location:index:php");
+            echo "<meta HTTP-EQUIV='refresh' CONTENT='0';URL=index.php'>";
         }
     }
     if($login == 0){
-        echo "<h1> Login incorreto! </h1>";
+        echo "<div id='erro'><h1> LOGIN INCORRETO! </h1></div>";
     }
     }
     
@@ -99,19 +103,10 @@ if(!isset($_SESSION['email'])){
     }
     fclose($arquivo);
 
-    echo "Bem Vindo ". $nome. " ";
-    echo "<a href='index.php?acao=logout' >Logout</a>";
-
-    if(isset($_GET['acao'])){
-        if($_GET['acao']=="logout"){
-            /*Exclui sessão*/
-            unset($_SESSION["email"]);
-            header("location:index.php");
-        }
-    }
+    echo "<h1 id='titulo2'>Olá ". $nome. "! </h1>";
+    echo "<div id='deslogar'><a href='logout.php' >Logout</a>"."</div><br>";
 }
 ?>
-    <hr />
     <?php
     $data=date("d/m/Y");
     if(isset($_SESSION['email'])){
@@ -134,7 +129,7 @@ if(!isset($_SESSION['email'])){
     if(isset($_SESSION['email'])){
         if($file=fopen("usuario.log", 'r')){
             while($linha=fgets($file)){
-                echo $linha. "<br/>";
+                echo "<a class='textos'>".$linha."</a>";
             }
         }
     }

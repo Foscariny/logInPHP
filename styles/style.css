@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: escrita;
+}
+
+@font-face {
+    font-family: classic;
+    src: url(../fonts/University.otf);
+}
+
+@font-face {
+    font-family: lapis;
+    src: url(../fonts/sketchy.ttf);
+}
+
+@font-face {
+    font-family: escrita;
+    src: url(../fonts/DubaiW23-Light.ttf);
+}
+
+body {	
+    background: rgb(118,0,186);
+    background: linear-gradient(90deg, rgba(118,0,186,1) 0%, rgba(0,183,198,1) 48%, rgba(0,194,255,1) 100%);
+
+}
+
+
+
+@media only screen and (max-width : 999px) {
+    
+    #erro{
+        position: absolute;
+        width: 100%;
+        top: 10px;
+    }
+
+
+    #erro h1{
+        text-align: center;
+        color:white;
+        font-size: 40px;
+
+    }
+
+     #form{
+        margin-top: 90px;
+        float: left;
+        width: 75%;
+        margin-left: 12.5%;
+        border-radius: 10px;
+        background-color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        box-shadow: 0px 10px 29px -7px rgba(0,0,0,0.75);
+    } 
+
+    .campos input{
+       width: 90%;
+       margin-left: 5%;
+       border: 1px solid #aaa;
+       border-radius: 4px;
+       margin-top: 10px;
+       margin-bottom: 10px;
+       outline: none;
+       padding: 2px;
+       box-sizing: border-box; 
+       transition: .3s;
+       font-size: 3vw;
+       padding-left: 9%;
+    }
+
+    #titulo{
+        text-align: center;
+        font-size: 7vw;
+        color: #555;
+    }
+
+    #titulo2{
+        text-align: center;
+        font-size: 30px;
+        color: #555;
+    }
+    
+    #deslogar{
+        width: 100%;
+        float: left;
+    }
+
+    #deslogar a{
+        margin-left: 45%;
+        float: left;
+        font-size: 3vw;
+    }
+
+    .textos{
+        float: left;
+        width: 100%;
+        font-size: 2.5vw;
+        text-align: center;
+        margin-bottom: 2px;
+    }
+
+    #registro{
+        float: left;
+        width: 100%;
+        text-align: center;
+        font-size: 3vw;
+        color: #555;
+        margin-top: 20px;
+    }
+
+    .campos input:focus{
+        border-color: #666;
+        box-shadow: 0 0 8px 0 #666;
+     }
+
+     .campos{
+         position: relative;
+     }
+
+     .campos i{
+        position: absolute;
+        left: 5.5%;
+        top: 1.5vw;
+        padding: 10px 10px;
+        font-size: 3vw;
+        color: #555;
+    }
+
+    .botao input{
+        float: left;
+        width: 40%;
+        border: 2px solid #555;
+        border-radius: 25px;
+        background-color: #555;
+        color: white;
+        margin-top: 5vw;
+        margin-left: 30%;
+        outline: none;
+        box-sizing: border-box; 
+        transition: .3s;
+        font-size: 4vw;
+     }
+   
+    
+    }
+
+@media only screen and (min-width : 1000px) {
+
+
+    #erro{
+        position: absolute;
+        width: 100%;
+        top: 0px;
+    }
+
+
+    #erro h1{
+        text-align: center;
+        color:white;
+        font-size: 50px;
+
+    }
+
+     #form{
+        margin-top: 90px;
+        float: left;
+        width: 32%;
+        margin-left: 34%;
+        border-radius: 10px;
+        background-color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        box-shadow: 0px 10px 29px -7px rgba(0,0,0,0.75);
+    } 
+
+    .campos input{
+       width: 90%;
+       margin-left: 5%;
+       border: 2px solid #aaa;
+       border-radius: 4px;
+       margin-top: 10px;
+       margin-bottom: 10px;
+       outline: none;
+       padding: 2px;
+       box-sizing: border-box; 
+       transition: .3s;
+       font-size: 30px;
+       padding-left: 50px;
+    }
+
+    #titulo{
+        text-align: center;
+        font-size: 60px;
+        color: #555;
+    }
+
+    #titulo2{
+        text-align: center;
+        font-size: 30px;
+        color: #555;
+    }
+    
+    #deslogar{
+        width: 100%;
+        float: left;
+    }
+
+    #deslogar a{
+        margin-left: 45%;
+        float: left;
+        font-size: 1vw;
+    }
+
+    .textos{
+        float: left;
+        width: 100%;
+        font-size: 1.2vw;
+        text-align: center;
+        margin-bottom: 2px;
+    }
+
+    #registro{
+        float: left;
+        width: 100%;
+        text-align: center;
+        font-size: 1.6vw;
+        color: #555;
+        margin-top: 20px;
+    }
+
+    .campos input:focus{
+        border-color: #666;
+        box-shadow: 0 0 8px 0 #666;
+     }
+
+     .campos{
+         position: relative;
+     }
+
+     .campos i{
+        position: absolute;
+        left: 6%;
+        top: 14px;
+        padding: 10px 10px;
+        font-size: 30px;
+        color: #555;
+    }
+
+    .botao input{
+        float: left;
+        width: 40%;
+        border: 2px solid #555;
+        border-radius: 25px;
+        background-color: #555;
+        color: white;
+        margin-top: 25px;
+        margin-left: 30%;
+        outline: none;
+        box-sizing: border-box; 
+        transition: .3s;
+        font-size: 35px;
+     }
+
+
+}

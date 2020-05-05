@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="icon" type="image/png" href="./imagens/icon.png">
+    <script src="https://kit.fontawesome.com/83506e1289.js" crossorigin="anonymous"></script>
     <title>Registro de Conta</title>
 </head>
 
@@ -79,13 +81,13 @@ if(isset($_POST['enviar-formulario'])):
         $senhaJaExistente = $dado['2'];
         if( $emailJaExistente == $email){
             $login = 1;
-            echo "Email já cadastrado! Favor repetir"; 
+            echo "<div id='erro'><h1 id='mensagemerro'>Email já cadastrado! Favor repetir</h1></div>"; 
             }
     }
         if($login == 0){
             if(fwrite($criaArq,$dados)){
                 $mensagem = "Enviado com Sucesso!";
-                header('Location:index.php');
+                echo "<script> window.location.replace('index.php') </script>";
                 }
                 
                 else{
@@ -99,39 +101,43 @@ if(isset($_POST['enviar-formulario'])):
 endif;
 ?>
 
-    <div id="alertas">
+     <div id='erro'><h1 id='mensagemerro'></h1></div>
 
-        <h1 id="confirmacao"></h1>
-        <h1 id="titulo">Registro de Conta</h1>
+    <form id="form" method="POST" enctype="multipart/form-data">
+    
+        <h1 id="titulo"> CADASTRO </h1>
 
-    </div>
-
-    <form id="formulario" method="POST" enctype="multipart/form-data">
         <!-- Nome -->
-        <label class="labels" for="nomeCompleto">Nome Completo:</label><br>
-        <input class="campos" type="text" required="required" name="nome_completo" pattern="^[^-\s][a-zA-ZÀ-ú ]*"
-            Placeholder="João Dias"><br>
+        <div class="campos">
+        <input class="campos" type="text" required="required" name="nome_completo" pattern="^[^-\s][a-zA-ZÀ-ú ]*" Placeholder="Nome"><br>
+        <i class="fas fa-envelope"></i>
+        </div> 
         <!-- Email -->
-        <label class="labels" for="email">Email:</label><br>
-        <input class="campos" type="email" required="required" name="email" Placeholder="exemplo@exemplo.com.br"><br>
+        <div class="campos">
+        <input class="campos" type="email" required="required" name="email" placeholder="Email"><br>
+        <i class="fas fa-envelope"></i>
+        </div> 
         <!-- Senha -->
-        <div>
-            <label class="labels" for="senha">Senha:</label><br>
-            <input class="campos" type="password" required="required" name="senha"  minlength="8"><br>
-            <label class="labels" for="senha">Repita a Senha:</label><br>
-            <input class="campos" type="password" required="required" name="senhaConfirmacao"  minlength="8"><br>
+        <div class="campos">
+            <input class="campos" type="password" required="required" name="senha"  minlength="8" placeholder="Senha"><br>
+            <i class="fas fa-lock"></i>
+        </div> 
+        <!-- Senha Confirmar -->
+        <div class="campos">
+            <input class="campos" type="password" required="required" name="senhaConfirmacao"  minlength="8" placeholder="Confirme a senha"><br>
+            <i class="fas fa-unlock"></i>
         </div>
         <!-- Botões -->
-        <div id="botoes">
+        <div class="botao">
             <input class="bot" type="submit" name="enviar-formulario">
-            <input class="bot" name="Reset" type="reset" class="formobjects" value="Redefinir">
         </div>
+        <p id="registro"> Já possui uma conta? <a href="index.php">Logue-se</a></p>
     </form>
 
 
     <script type="text/javascript">
         var mensagem = "<?php echo $mensagem;?>";
-        document.querySelector("#confirmacao").innerText = mensagem;
+        document.querySelector("#mensagemerro").innerText = mensagem;
     </script>
 
 
